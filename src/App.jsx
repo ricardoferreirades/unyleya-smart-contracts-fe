@@ -7,8 +7,7 @@ import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { useAccount, usePublicClient } from 'wagmi';
 import { useDispatch } from 'react-redux';
 import Header from './components/Header';
-import AdminPanel from './components/AdminPanel';
-import UserPanel from './components/UserPanel';
+import TabbedInterface from './components/TabbedInterface';
 import NftList from './components/NftList';
 import { setERC20Balance } from './store/balancesSlice';
 import { getERC20ContractWithProvider } from './utils/contracts';
@@ -69,9 +68,8 @@ function AppContent() {
       <Header />
       <BalanceLoader />
       <main className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-          <AdminPanel />
-          <UserPanel />
+        <div className="mb-6">
+          <TabbedInterface />
         </div>
         <div className="mt-6">
           <NftList />
