@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
 import PaymentTokenABI from '../abi/PaymentToken.json';
-import PaidMintNFTABI from '../abi/PaidMintNFT.json';
+import NFTABI from '../abi/NFT.json';
 
 const ERC20_ADDRESS = import.meta.env.VITE_ERC20_ADDRESS;
 const ERC721_ADDRESS = import.meta.env.VITE_ERC721_ADDRESS;
@@ -38,7 +38,7 @@ export const getERC721ContractWithProvider = (provider) => {
   if (!ERC721_ADDRESS) {
     throw new Error('ERC721_ADDRESS not set in environment variables');
   }
-  return new ethers.Contract(ERC721_ADDRESS, PaidMintNFTABI, provider);
+  return new ethers.Contract(ERC721_ADDRESS, NFTABI, provider);
 };
 
 /**
@@ -50,6 +50,6 @@ export const getERC721ContractWithSigner = (signer) => {
   if (!ERC721_ADDRESS) {
     throw new Error('ERC721_ADDRESS not set in environment variables');
   }
-  return new ethers.Contract(ERC721_ADDRESS, PaidMintNFTABI, signer);
+  return new ethers.Contract(ERC721_ADDRESS, NFTABI, signer);
 };
 
