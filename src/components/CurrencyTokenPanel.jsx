@@ -657,6 +657,9 @@ const CurrencyTokenPanel = () => {
           <h2 className="card-title">Read Functions</h2>
 
           <div className="divider">Query Balance</div>
+          <p className="text-xs text-base-content/70 mb-2">
+            Enter any wallet address to see how many ERC-20 tokens it holds.
+          </p>
           <div className="form-control w-full mb-4">
             <label className="label">
               <span className="label-text">Address</span>
@@ -685,6 +688,9 @@ const CurrencyTokenPanel = () => {
           </button>
 
           <div className="divider">Query Allowance</div>
+          <p className="text-xs text-base-content/70 mb-2">
+            See how many tokens a spender is allowed to move on behalf of the owner.
+          </p>
           <div className="form-control w-full mb-2">
             <label className="label">
               <span className="label-text">Owner Address</span>
@@ -732,6 +738,9 @@ const CurrencyTokenPanel = () => {
           <h2 className="card-title">Write Functions</h2>
 
           <div className="divider">Transfer</div>
+          <p className="text-xs text-base-content/70 mb-2">
+            Sends tokens from your connected wallet to the destination address.
+          </p>
           <div className="form-control w-full mb-2">
             <label className="label">
               <span className="label-text">To Address</span>
@@ -772,6 +781,9 @@ const CurrencyTokenPanel = () => {
           </button>
 
           <div className="divider">Approve</div>
+          <p className="text-xs text-base-content/70 mb-2">
+            Allow another address to spend up to a maximum amount of your tokens.
+          </p>
           <div className="form-control w-full mb-2">
             <label className="label">
               <span className="label-text">Spender Address</span>
@@ -812,6 +824,9 @@ const CurrencyTokenPanel = () => {
           </button>
 
           <div className="divider">Transfer From</div>
+          <p className="text-xs text-base-content/70 mb-2">
+            Uses an existing allowance to move tokens from one address to another.
+          </p>
           <div className="form-control w-full mb-2">
             <label className="label">
               <span className="label-text">From Address</span>
@@ -877,6 +892,9 @@ const CurrencyTokenPanel = () => {
             <h2 className="card-title text-warning">Owner Functions</h2>
 
             <div className="divider">Mint and Transfer</div>
+            <p className="text-xs text-base-content/70 mb-2">
+              Mints new tokens and sends them directly to the chosen address.
+            </p>
             <div className="form-control w-full mb-2">
               <label className="label">
                 <span className="label-text">To Address</span>
@@ -917,6 +935,9 @@ const CurrencyTokenPanel = () => {
             </button>
 
             <div className="divider">Transfer Ownership</div>
+            <p className="text-xs text-base-content/70 mb-2">
+              Transfers admin control of the ERC-20 contract to a new wallet.
+            </p>
             <div className="form-control w-full mb-4">
               <label className="label">
                 <span className="label-text">New Owner Address</span>
