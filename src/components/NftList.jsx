@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useAccount, usePublicClient, useWalletClient } from 'wagmi';
 import { useSelector, useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
@@ -23,7 +23,7 @@ const NftList = () => {
       setLoading(true);
       const provider = publicClientToEthersProvider(publicClient);
       const erc721Contract = getERC721ContractWithProvider(provider);
-      
+
       // Get balance (number of NFTs owned)
       const balance = await erc721Contract.balanceOf(address);
       const balanceNum = Number(balance);
@@ -33,14 +33,26 @@ const NftList = () => {
         return;
       }
 
-      // Get all token IDs using tokenOfOwnerByIndex (ERC721Enumerable)
+      // Contract is not ERC721Enumerable, so we can’t use tokenOfOwnerByIndex.
+      // Instead, scan all minted tokens and collect those owned by the user.
+      // Token IDs on this contract start at 1, and nextTokenId() gives us the next ID to be minted.
+      const nextTokenId = await erc721Contract.nextTokenId();
+      const nextTokenIdNum = Number(nextTokenId);
+
       const tokenIds = [];
-      for (let i = 0; i < balanceNum; i++) {
+      // Start from tokenId = 1 and go up to nextTokenId - 1
+      for (let tokenId = 1; tokenId < nextTokenIdNum; tokenId++) {
         try {
-          const tokenId = await erc721Contract.tokenOfOwnerByIndex(address, i);
-          tokenIds.push(tokenId.toString());
+          const owner = await erc721Contract.ownerOf(tokenId);
+          if (owner.toLowerCase() === address.toLowerCase()) {
+            tokenIds.push(tokenId.toString());
+            // Small optimization: stop once we’ve collected all known tokens for this wallet
+            if (tokenIds.length >= balanceNum) {
+              break;
+            }
+          }
         } catch (error) {
-          console.error(`Error fetching token at index ${i}:`, error);
+          console.error(`Error checking ownership for token ${tokenId}:`, error);
         }
       }
 
@@ -75,19 +87,6 @@ const NftList = () => {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    loadNFTs();
-  }, [isConnected, address, publicClient]);
-
-  // Listen for reload events
-  useEffect(() => {
-    const handleReload = () => {
-      loadNFTs();
-    };
-    window.addEventListener('nftListReload', handleReload);
-    return () => window.removeEventListener('nftListReload', handleReload);
-  }, [isConnected, address, publicClient]);
 
   const handleTransfer = async (tokenId) => {
     const toAddress = transferTo[tokenId];
@@ -183,7 +182,7 @@ const NftList = () => {
             <span className="loading loading-spinner loading-lg"></span>
           </div>
         ) : nfts.length === 0 ? (
-          <p className="text-center py-8">You don't own any NFTs yet.</p>
+          <p className="text-center py-8">You don&apos;t own any NFTs yet.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {nfts.map((nft) => (
