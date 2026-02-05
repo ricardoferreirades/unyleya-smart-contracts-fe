@@ -965,6 +965,9 @@ const NFTPanel = () => {
           <h2 className="card-title">Read Functions</h2>
 
           <div className="divider">Query Balance</div>
+          <p className="text-xs text-base-content/70 mb-2">
+            Enter any wallet address to see how many NFTs it owns from this collection.
+          </p>
           <div className="form-control w-full mb-4">
             <label className="label">
               <span className="label-text">Address</span>
@@ -993,6 +996,9 @@ const NFTPanel = () => {
           </button>
 
           <div className="divider">Query Owner Of</div>
+          <p className="text-xs text-base-content/70 mb-2">
+            Look up which wallet currently owns a specific NFT (by token ID).
+          </p>
           <div className="form-control w-full mb-4">
             <label className="label">
               <span className="label-text">Token ID</span>
@@ -1021,6 +1027,9 @@ const NFTPanel = () => {
           </button>
 
           <div className="divider">Query Token URI</div>
+          <p className="text-xs text-base-content/70 mb-2">
+            Get the metadata URI (for example an IPFS link) for a specific token ID.
+          </p>
           <div className="form-control w-full mb-4">
             <label className="label">
               <span className="label-text">Token ID</span>
@@ -1049,6 +1058,9 @@ const NFTPanel = () => {
           </button>
 
           <div className="divider">Query Get Approved</div>
+          <p className="text-xs text-base-content/70 mb-2">
+            See which address is allowed to manage this specific NFT (if any).
+          </p>
           <div className="form-control w-full mb-4">
             <label className="label">
               <span className="label-text">Token ID</span>
@@ -1077,6 +1089,9 @@ const NFTPanel = () => {
           </button>
 
           <div className="divider">Query Is Approved For All</div>
+          <p className="text-xs text-base-content/70 mb-2">
+            Check if the operator can manage all NFTs owned by the owner address.
+          </p>
           <div className="form-control w-full mb-2">
             <label className="label">
               <span className="label-text">Owner Address</span>
@@ -1124,6 +1139,9 @@ const NFTPanel = () => {
           <h2 className="card-title">Write Functions</h2>
 
           <div className="divider">Mint (to yourself)</div>
+          <p className="text-xs text-base-content/70 mt-2">
+            This will first approve the payment tokens and then mint a new NFT to your wallet.
+          </p>
           <button
             className="btn btn-primary"
             onClick={handleMint}
@@ -1138,11 +1156,12 @@ const NFTPanel = () => {
               'Mint NFT'
             )}
           </button>
-          <p className="text-xs text-base-content/70 mt-2">
-            This will approve tokens and mint an NFT to your address
-          </p>
+          
 
           <div className="divider">Mint To</div>
+          <p className="text-xs text-base-content/70 mb-2">
+            Mint a new NFT directly to another wallet instead of your own.
+          </p>
           <div className="form-control w-full mb-4">
             <label className="label">
               <span className="label-text">Recipient Address</span>
@@ -1171,6 +1190,9 @@ const NFTPanel = () => {
           </button>
 
           <div className="divider">Transfer From</div>
+          <p className="text-xs text-base-content/70 mb-2">
+            Move an existing NFT from one address to another (requires ownership or approval).
+          </p>
           <div className="form-control w-full mb-2">
             <label className="label">
               <span className="label-text">From Address</span>
@@ -1249,6 +1271,9 @@ const NFTPanel = () => {
           </div>
 
           <div className="divider">Approve</div>
+          <p className="text-xs text-base-content/70 mb-2">
+            Allow another address to transfer this specific NFT on your behalf.
+          </p>
           <div className="form-control w-full mb-2">
             <label className="label">
               <span className="label-text">To Address</span>
@@ -1289,6 +1314,9 @@ const NFTPanel = () => {
           </button>
 
           <div className="divider">Set Approval For All</div>
+          <p className="text-xs text-base-content/70 mb-2">
+            Grant or revoke permission for an operator to manage all of your NFTs.
+          </p>
           <div className="form-control w-full mb-2">
             <label className="label">
               <span className="label-text">Operator Address</span>
@@ -1336,6 +1364,9 @@ const NFTPanel = () => {
             <h2 className="card-title text-warning">Owner Functions</h2>
 
             <div className="divider">Set Price</div>
+            <p className="text-xs text-base-content/70 mb-2">
+              Define how many ERC-20 tokens are needed to mint a single NFT.
+            </p>
             <div className="form-control w-full mb-4">
               <label className="label">
                 <span className="label-text">New Price (tokens)</span>
@@ -1364,6 +1395,9 @@ const NFTPanel = () => {
             </button>
 
             <div className="divider">Set Base URI</div>
+            <p className="text-xs text-base-content/70 mb-2">
+              Base path used to build token metadata URLs (often an IPFS folder).
+            </p>
             <div className="form-control w-full mb-4">
               <label className="label">
                 <span className="label-text">Base URI</span>
@@ -1392,6 +1426,9 @@ const NFTPanel = () => {
             </button>
 
             <div className="divider">Set Token URI</div>
+            <p className="text-xs text-base-content/70 mb-2">
+              Override the metadata URI for a single NFT token ID.
+            </p>
             <div className="form-control w-full mb-2">
               <label className="label">
                 <span className="label-text">Token ID</span>
@@ -1432,6 +1469,9 @@ const NFTPanel = () => {
             </button>
 
             <div className="divider">Transfer Ownership</div>
+            <p className="text-xs text-base-content/70 mb-2">
+              Move contract ownership (admin rights) to another wallet.
+            </p>
             <div className="form-control w-full mb-4">
               <label className="label">
                 <span className="label-text">New Owner Address</span>
