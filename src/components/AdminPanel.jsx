@@ -237,6 +237,9 @@ const AdminPanel = () => {
 
         {/* Mint and Transfer */}
         <div className="divider">Mint and Transfer Tokens</div>
+        <p className="mb-2 text-xs text-base-content/70">
+          Mint new ERC-20 tokens and send them directly to a recipient wallet.
+        </p>
         <div className="form-control w-full">
           <label className="label">
             <span className="label-text">Recipient Address</span>
@@ -278,6 +281,9 @@ const AdminPanel = () => {
 
         {/* Set Price */}
         <div className="divider">Update NFT Price</div>
+        <p className="mb-2 text-xs text-base-content/70">
+          Define how many ERC-20 tokens are required to mint a single NFT.
+        </p>
         <div className="form-control w-full">
           <label className="label">
             <span className="label-text">New Price (tokens)</span>
